@@ -1,0 +1,30 @@
+.header {
+}
+.top {
+	height: 85px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 2px solid #0000001c;
+}
+.bot {
+	height: 60px;
+	background-color: #c2b8a9;
+}
+.navList {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+.navItem {
+}
+.navItemLink {
+	padding: 20px 15px;
+	display: block;
+}
+.active {
+	background-color: #d2c7b7;
+	border-radius: 4px;
+}

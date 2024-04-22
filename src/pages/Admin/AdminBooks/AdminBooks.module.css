@@ -1,0 +1,11 @@
+.filterBar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	row-gap: 20px;
+}
+.addBookBtn {
+	height: 100%;
+	margin-left: auto;
+}

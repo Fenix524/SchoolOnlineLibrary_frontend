@@ -1,0 +1,32 @@
+.loggedIn {
+	display: flex;
+	gap: 6px;
+	align-items: end;
+	/* padding: 10px 20px; */
+	/* border-radius: 20px; */
+	/* border: 1px dashed #0000007e; */
+}
+.notLoggedIn {
+	display: flex;
+	gap: 12px;
+}
+.name,
+.email {
+	text-align: right;
+}
+.name {
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+.email {
+	margin-bottom: 5px;
+	font-size: 14px;
+	opacity: 0.7;
+}
+.userLogo {
+	height: 60px;
+	width: 60px;
+
+	object-fit: cover;
+	border-radius: 50%;
+}

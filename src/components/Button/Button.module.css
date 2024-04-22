@@ -1,0 +1,29 @@
+.btn {
+	width: 100%;
+	padding: 13px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+
+	border-radius: 9px;
+	border: 1px solid transparent;
+	background-color: transparent;
+
+	font-size: 16px;
+	color: #000;
+	cursor: pointer;
+}
+.brown {
+	background-color: #b8a382;
+	border: 1px solid #00000025;
+	color: #fff;
+}
+.gray {
+	color: #0000007b;
+}
+.transparent {
+	border-color: #0000003a;
+	color: #0000007c;
+}

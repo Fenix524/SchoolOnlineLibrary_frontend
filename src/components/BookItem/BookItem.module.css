@@ -1,0 +1,70 @@
+.book {
+	/* height: 52px; */
+	width: 100%;
+	padding: 15px 15px;
+	padding-right: 25px;
+
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	row-gap: 10px;
+
+	background-color: rgba(194, 184, 169, 0.103);
+	border-radius: 8px;
+	border-left: 3px solid #c2b8a9;
+	border-right: 3px solid #c2b8a9;
+}
+.infoItem {
+	flex-grow: 1;
+	padding-right: 15px;
+}
+.columnTitle {
+	margin-right: 5px;
+	color: rgba(0, 0, 0, 0.385);
+}
+.change {
+	margin-right: 10px;
+}
+.showMore,
+.change,
+.delete {
+	background-color: transparent;
+	border: 1px solid transparent;
+	cursor: pointer;
+}
+.delete {
+	margin-right: 5px;
+	margin-left: 5px;
+	transform: translate(-5px, 1px);
+}
+.showMore .open {
+	transform: rotate(180deg);
+}
+.showMore .close {
+}
+
+.moreInfo {
+	margin-top: 10px;
+	display: flex;
+	background-color: rgba(194, 184, 169, 0.103);
+	border: 1px solid #c2b8a9;
+	border-radius: 7px;
+}
+.bookImg {
+	border-radius: 7px 0 0 7px;
+	object-fit: cover;
+	height: 300px;
+	width: 250px;
+	/* transform: rotate(-90deg); */
+	transform-origin: top left;
+}
+.moreInfoList {
+	width: 100%;
+}
+.moreInfoItem {
+	padding: 10px;
+	background-color: #c2b8a96a;
+}
+.moreInfoItem:nth-child(2n) {
+	background-color: #fff;
+}

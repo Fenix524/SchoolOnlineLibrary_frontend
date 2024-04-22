@@ -1,0 +1,14 @@
+.filterBox {
+	/* margin-top: 15px; */
+	display: flex;
+	gap: 16px;
+}
+.searchBox {
+	max-width: 400px;
+	flex-grow: 1;
+}
+.selectBox {
+	max-width: 240px;
+	min-width: 180px;
+	flex-grow: 1;
+}

@@ -1,0 +1,65 @@
+.wrapper {
+	position: relative;
+	width: 100%;
+	padding-bottom: 20px;
+}
+.title {
+	color: rgba(0, 0, 0, 0.44);
+}
+.fieldWraper {
+	display: flex;
+	position: relative;
+}
+.inputField {
+	min-height: 50px;
+	padding: 10px;
+	flex-grow: 1;
+	padding-right: 55px;
+	padding-left: 15px;
+
+	border-radius: 11px;
+	border: 1px solid rgba(0, 0, 0, 0.162);
+
+	line-height: 1.6;
+}
+.textarea {
+	min-height: 200px;
+}
+.inputField:focus,
+.inputField:active {
+	border: 2px dashed #b8a382;
+	outline: none;
+}
+.selectField {
+	flex-grow: 1;
+}
+
+.fieldIndecator {
+	display: block;
+	height: 50px;
+	width: 50px;
+
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	background-color: #fafafa;
+	border-radius: 11px;
+	border: 1px solid rgba(0, 0, 0, 0.162);
+}
+
+.fieldError {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+
+	font-size: 14px;
+	color: rgba(85, 1, 1, 0.436);
+}
+
+.error {
+	background-color: #fed6d6;
+}
+.success {
+	background-color: #deebd7;
+}

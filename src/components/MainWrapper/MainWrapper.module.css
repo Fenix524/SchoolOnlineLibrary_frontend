@@ -1,0 +1,40 @@
+.main {
+	min-height: 100vh;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+.main::before {
+	z-index: -1;
+	content: '';
+	height: 100vh;
+	width: 100vw;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	background: linear-gradient(
+			to bottom,
+			rgba(255, 255, 255, 1) 0%,
+			rgba(255, 255, 255, 0.99) 30%,
+			rgba(255, 255, 255, 0.97) 60%,
+			rgba(255, 255, 255, 0.96) 100%
+		),
+		/* rgba(255, 255, 255, 1) 0%,
+			rgba(255, 255, 255, 0.8) 30%,
+			rgba(255, 255, 255, 0.6) 40%,
+			rgba(255, 255, 255, 0.3) 50%,
+			rgba(255, 255, 255, 0.1) 60%,
+			rgba(255, 255, 255, 0.1) 70%,
+			rgba(255, 255, 255, 0.2) 80%,
+			rgba(255, 255, 255, 0.8) 90%,
+			rgb(255, 255, 255) 100%
+		),
+		url('https://i.redd.it/gdxaxsmr17pa1.gif'); */
+			url('https://www.rabstol.net/uploads/gallery/main/178/rabstol_net_books_04.jpg');
+
+	/* url('https://www.erofights.com/uploads/act/image_0/5641/312_10001.webp'); */
+	background-repeat: no-repeat;
+	background-size: cover;
+}

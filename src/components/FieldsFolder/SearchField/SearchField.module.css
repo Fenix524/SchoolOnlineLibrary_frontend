@@ -1,0 +1,26 @@
+.wrapper {
+	position: relative;
+}
+.searchField {
+	height: 55px;
+	width: 100%;
+	padding: 14px 20px;
+	padding-right: 60px;
+
+	border-radius: 11px;
+	border: 1px solid rgba(0, 0, 0, 0.192);
+}
+
+.searchField:focus,
+.searchField:active {
+	border: 1px solid #b8a382;
+	outline: none;
+}
+
+.icon {
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	opacity: 0.07;
+}

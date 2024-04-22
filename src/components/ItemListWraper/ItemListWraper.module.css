@@ -1,0 +1,6 @@
+.itemListWrapper {
+	margin-top: 20px;
+}
+.itemListWrapper > * {
+	margin-bottom: 13px;
+}

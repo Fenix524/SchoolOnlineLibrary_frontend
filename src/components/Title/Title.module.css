@@ -1,0 +1,14 @@
+.title {
+	font-weight: 400;
+}
+.small {
+	font-size: 25px;
+	font-weight: 500;
+}
+.large {
+	font-size: 48px;
+	font-weight: 700;
+}
+.medium {
+	font-size: 40px;
+}
