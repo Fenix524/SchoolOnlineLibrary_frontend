@@ -3,6 +3,7 @@ import { axiosInstance, clearAuthHeader, setAuthHeader } from '../../util/axios'
 import { RootState } from '../store'
 import { useDispatch } from 'react-redux'
 import { getUserById } from '../../util/responsesToDB'
+import { toast } from 'react-toastify'
 
 /*
  * POST @ /users/signup
@@ -24,8 +25,14 @@ export const register = createAsyncThunk(
 			const res = await axiosInstance.post('/auth/register', userData)
 			setAuthHeader(res.data.token)
 			localStorage.setItem('token', res.data.token)
+			toast.success('Реєстрація успішна')
 			return res.data
 		} catch (error) {
+			if (error.response.status < 500) {
+				toast.error('Користувач з такою поштою вже існує')
+			} else {
+				toast.error('Помилка реєстрації')
+			}
 			return thunkAPI.rejectWithValue(error.message)
 		}
 	}
@@ -46,8 +53,16 @@ export const logIn = createAsyncThunk(
 
 			localStorage.setItem('token', res.data.token)
 			setAuthHeader(res.data.token)
+			toast.success('Авторизація успішна')
 			return res.data
 		} catch (error) {
+			if (error.response.status < 500) {
+				toast.error('Користувач з такою поштою не знайдений')
+			} else {
+				toast.error('Помилка авторизації')
+			}
+
+			console.log(error)
 			return thunkAPI.rejectWithValue(error.message)
 		}
 	}

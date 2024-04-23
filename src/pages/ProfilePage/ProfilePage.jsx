@@ -76,7 +76,7 @@ const ProfilePage = props => {
 						className={css.userLogo}
 					/>
 					<ul className={css.userInfoList}>
-						{userInformations.map(inf => (
+						{userInformations?.map(inf => (
 							<li className={css.userInfoItem}>
 								<div className={css.userInfoItemTextPart}>
 									<span className={css.itemTitle}>{inf.nameColumn + ':'}</span>
@@ -112,36 +112,40 @@ const ProfilePage = props => {
 					<Title>Твої книги</Title>
 					<div className={css.bookList}>
 						<ItemListWraper>
-							{bookCopies.map(bookCopy => {
-								return (
-									<ListItem
-										key={bookCopy.copyId}
-										itemId={bookCopy.copyId}
-										infoList={[
-											{
-												label: bookCopy.bookId?.name,
-												value: bookCopy.copyId,
-											},
-											{ label: 'Книга', value: bookCopy.bookId?.name },
-											{
-												label: 'Власник Книги',
-												value:
-													bookCopy.userId.firstName +
-														' ' +
-														bookCopy.userId.lastName || 'Немає',
-											},
-											{
-												label: 'Дата видачі',
-												value: bookCopy.issuedDate,
-											},
-											{
-												label: 'Дата повернення',
-												value: bookCopy.dueDate,
-											},
-										]}
-									/>
-								)
-							})}
+							{!bookCopies ? (
+								<p>Ой тут порожньо! 🤔</p>
+							) : (
+								bookCopies?.map(bookCopy => {
+									return (
+										<ListItem
+											key={bookCopy.copyId}
+											itemId={bookCopy.copyId}
+											infoList={[
+												{
+													label: bookCopy.bookId?.name,
+													value: bookCopy.copyId,
+												},
+												{ label: 'Книга', value: bookCopy.bookId?.name },
+												{
+													label: 'Власник Книги',
+													value:
+														bookCopy.userId.firstName +
+															' ' +
+															bookCopy.userId.lastName || 'Немає',
+												},
+												{
+													label: 'Дата видачі',
+													value: bookCopy.issuedDate,
+												},
+												{
+													label: 'Дата повернення',
+													value: bookCopy.dueDate,
+												},
+											]}
+										/>
+									)
+								})
+							)}
 						</ItemListWraper>
 					</div>
 				</div>

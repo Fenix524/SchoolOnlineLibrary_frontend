@@ -11,6 +11,6 @@ export const clearAuthHeader = () => {
 }
 
 export const axiosInstance = axios.create({
-	baseURL: 'http://localhost:3333/',
-	// baseURL: 'https://dashboard.heroku.com/apps/online-school-library/',
+	// baseURL: 'http://localhost:3333/',
+	baseURL: 'https://schoolonlinelibrary-backend-1.onrender.com/',
 })

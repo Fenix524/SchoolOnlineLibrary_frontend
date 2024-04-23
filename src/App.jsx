@@ -16,10 +16,7 @@ import ProfilePage from './pages/ProfilePage/ProfilePage'
 import { Role } from './util/enums'
 
 import { useDispatch } from 'react-redux'
-import { setToken } from './redux/auth/auth.slice'
 import { refreshUser } from './redux/auth/authOperations'
-import { setAuthHeader } from './util/axios'
-// const Header = lazy(() => import('./components/Header/Header'))
 const AdminPage = lazy(() => import('./pages/AdminPage/AdminPage'))
 const AuthorizationPage = lazy(() =>
 	import('./pages/AuthorizationPage/AuthorizationPage')

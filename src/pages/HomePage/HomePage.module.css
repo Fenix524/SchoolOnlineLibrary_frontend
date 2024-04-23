@@ -1,20 +1,27 @@
 .hero {
-	margin-top: 15px;
+	/* margin-top: 15px; */
 }
 .heroContentWrapper {
-	height: 700px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	z-index: -1;
+
+	/* height: 700px; */
 	display: flex;
 	align-items: center;
 
 	background: linear-gradient(
 		to bottom,
-		rgba(0, 0, 0, 0.6) -10%,
-		rgba(110, 87, 27, 0.425) 130%
+		rgba(194, 162, 120, 0.209) -10%,
+		rgba(110, 73, 27, 0.645) 130%
 	);
 	background-repeat: no-repeat;
 	background-size: cover;
 
-	border-radius: 25px;
+	/* border-radius: 25px; */
 
 	color: #fff;
 }

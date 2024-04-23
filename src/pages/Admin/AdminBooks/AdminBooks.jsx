@@ -40,6 +40,11 @@ const AdminBooks = props => {
 
 	const [searchParams] = useSearchParams()
 
+	const [updatePage, setUpdatePage] = useState(0)
+	const update = () => {
+		setUpdatePage(updatePage + 1)
+	}
+
 	useEffect(() => {
 		getAllBooks({ ...Object.fromEntries(searchParams), sort: 'name' }).then(
 			req => {
@@ -47,7 +52,7 @@ const AdminBooks = props => {
 				console.log(req.data)
 			}
 		)
-	}, [searchParams])
+	}, [searchParams, updatePage])
 
 	useEffect(() => {
 		getAllAuthors({
@@ -61,14 +66,6 @@ const AdminBooks = props => {
 				})
 			)
 		})
-		// getAllAuthors().then(res => {
-		// 	console.log('Автори', res.data)
-		// 	setAuthorOptions(
-		// 		res.data.map(author => {
-		// 			return { value: author?._id, label: author?.fullName }
-		// 		})
-		// 	)
-		// })
 
 		getAllGenres({
 			...Object.fromEntries(searchParams),
@@ -81,15 +78,6 @@ const AdminBooks = props => {
 				})
 			)
 		})
-
-		// getAllGenres().then(res => {
-		// 	console.log('Жанри', res.data)
-		// 	setGenreOptions(
-		// 		res.data.map(genre => {
-		// 			return { value: genre?._id, label: genre?.genreName }
-		// 		})
-		// 	)
-		// })
 	}, [])
 
 	const validationSchema = yup.object({
@@ -114,7 +102,7 @@ const AdminBooks = props => {
 			ageRating: bookData?.ageRating || '',
 			desc: bookData?.desc || 'Відсутній',
 		}
-		console.log('+++++++++++++ Initial Value +++++++++++++++++', iv)
+		// console.log('+++++++++++++ Initial Value +++++++++++++++++', iv)
 		return iv
 	}
 
@@ -129,7 +117,7 @@ const AdminBooks = props => {
 							setBookId(null)
 							setModalIsOpen(true)
 							setFormMode('create')
-							console.log(modalIsOpen, formMode)
+							// console.log(modalIsOpen, formMode)
 						}}
 					>
 						<p>Нова книга </p>
@@ -148,6 +136,7 @@ const AdminBooks = props => {
 					}}
 					onDeleteItem={id => {
 						deleteBook(id)
+						update()
 					}}
 				/>
 			</div>
@@ -161,11 +150,17 @@ const AdminBooks = props => {
 									...data,
 									genre: [data.genre],
 								})
-								console.log(addedBook)
+								// console.log(addedBook)
+								if (addedBook) {
+									update()
+								}
 							}
 							if (formMode === 'update') {
 								const updatedBook = await updateBook(bookId, data)
-								console.log(updatedBook)
+								// console.log(updatedBook)
+								if (updatedBook) {
+									update()
+								}
 							}
 						}}
 						validationSchema={validationSchema}

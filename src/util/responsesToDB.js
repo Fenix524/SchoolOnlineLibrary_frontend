@@ -46,22 +46,22 @@ export async function createBook(book) {
 export async function updateBook(id, book) {
 	try {
 		const books = await axiosInstance.put('/books/' + id, book)
-		toast.success(`Книгу з ID ${id} успішно оновлено!`)
+		toast.success(`Книгу успішно оновлено!`)
 		return books
 	} catch (error) {
 		console.error(error)
-		toast.error(`При оновленні книги з ID ${id} сталася помилка!`)
+		toast.error(`При оновленні книги сталася помилка!`)
 		return error
 	}
 }
 export async function deleteBook(id) {
 	try {
 		const book = await axiosInstance.delete('/books/' + id)
-		toast.success(`Книгу з ID ${id} успішно видалено!`)
+		toast.success(`Книгу з успішно видалено!`)
 		return book
 	} catch (error) {
 		console.error(error)
-		toast.error(`При видаленні книги з ID ${id} сталася помилка!`)
+		toast.error(`При видаленні книги сталася помилка!`)
 		return error
 	}
 }
@@ -93,7 +93,7 @@ export async function createUser(data) {
 		return user
 	} catch (error) {
 		console.error(error)
-		toast.error(`При створенні користувача сталася помилка!`)
+		toast.error('Користувач з такою поштою вже існує')
 		return error
 	}
 }
@@ -104,7 +104,7 @@ export async function updateUser(id, data) {
 		return user
 	} catch (error) {
 		console.error(error)
-		toast.error(`При оновленні користувача з ID ${id} сталася помилка!`)
+		toast.error('Користувач з такою поштою вже існує')
 		return error
 	}
 }
@@ -205,7 +205,11 @@ export async function updateGenre(id, data) {
 		return genre
 	} catch (error) {
 		console.error(error)
-		toast.error(`При оновленні жанру з ID ${id} сталася помилка!`)
+		if (error.response.status < 500) {
+			toast.error('Жанр з такою назвою, вже існує!')
+		} else {
+			toast.error('Помилка оновлення')
+		}
 		return error
 	}
 }
@@ -227,7 +231,11 @@ export async function createGenre(data) {
 		return genres
 	} catch (error) {
 		console.error(error)
-		toast.error(`При створенні жанру сталася помилка!`)
+		if (error.response.status < 500) {
+			toast.error('Жанр з такою назвою, вже існує!')
+		} else {
+			toast.error('Помилка створення')
+		}
 		return error
 	}
 }
@@ -250,7 +258,11 @@ export async function createBookCopy(data) {
 		return bookCopy
 	} catch (error) {
 		console.error(error)
-		toast.error(`При створенні копії книги сталася помилка!`)
+		if (error.response.status < 500) {
+			toast.error('Копія книги з таким кодом книги, вже існує!')
+		} else {
+			toast.error('Помилка створення')
+		}
 		return error
 	}
 }
@@ -261,7 +273,11 @@ export async function updateBookCopy(id, data) {
 		return bookCopy
 	} catch (error) {
 		console.error(error)
-		toast.error(`При оновленні копії книги з ID ${id} сталася помилка!`)
+		if (error.response.status < 500) {
+			toast.error('Копія книги з таким кодом книги, вже існує!')
+		} else {
+			toast.error('Помилка оновлення')
+		}
 		return error
 	}
 }
