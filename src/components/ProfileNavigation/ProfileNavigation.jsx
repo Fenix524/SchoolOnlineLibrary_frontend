@@ -14,7 +14,7 @@ const ProfileNavigation = ({ isLogedIn }) => {
 			{isLogedIn && (
 				<Link to={'/profile'}>
 					<div className={css.loggedIn}>
-						<div>
+						<div className={css.textInfo}>
 							<p
 								className={css.name}
 							>{`${curentUser.firstName}  ${curentUser.lastName}`}</p>

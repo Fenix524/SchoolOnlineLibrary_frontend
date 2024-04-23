@@ -5,6 +5,7 @@ import Button from '../../../components/Button/Button'
 import {
 	addImg,
 	createUser,
+	deleteUser,
 	getAllBooks,
 	getAllUsers,
 	updateUser,
@@ -24,6 +25,7 @@ const AdminUsers = props => {
 	const [modalIsOpen, setModalIsOpen] = useState(false)
 	const [formMode, setFormMode] = useState('create')
 	const [choiceUser, setChoiceUser] = useState({})
+	const [updatePage, setUpdatePage] = useState(0)
 
 	const [searchParams] = useSearchParams()
 
@@ -35,7 +37,11 @@ const AdminUsers = props => {
 			setUsers(req.data)
 			console.log(req.data)
 		})
-	}, [searchParams])
+	}, [searchParams, updatePage])
+
+	const update = () => {
+		setUpdatePage(updatePage + 1)
+	}
 
 	const initialValue = user => {
 		return {
@@ -93,6 +99,11 @@ const AdminUsers = props => {
 								setModalIsOpen(true)
 								setFormMode('update')
 							}}
+							onDeleteItem={() => {
+								deleteUser(user._id).then(() => {
+									update()
+								})
+							}}
 						/>
 					))}
 				</ItemListWraper>
@@ -121,6 +132,7 @@ const AdminUsers = props => {
 									role,
 									dateOfBirth,
 								})
+								update()
 								console.log(newUser)
 							}
 						}}

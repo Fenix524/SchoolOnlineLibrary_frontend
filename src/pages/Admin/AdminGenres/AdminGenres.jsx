@@ -37,7 +37,7 @@ const AdminGenres = props => {
 			setGenres(req.data)
 			console.log(req.data)
 		})
-	}, [searchParams])
+	}, [searchParams, updatePage])
 
 	// useEffect(() => {
 	// 	getAllGenres()

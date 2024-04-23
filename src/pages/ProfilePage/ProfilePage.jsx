@@ -83,9 +83,6 @@ const ProfilePage = props => {
 									<p className={css.itemInfo}>{inf.value}</p>
 								</div>
 								<div className={css.point}></div>
-								{/* <button className={css.itemChangeBtn} onClick={() => {}}>
-									<FaPencilAlt size={15} />
-								</button> */}
 							</li>
 						))}
 					</ul>

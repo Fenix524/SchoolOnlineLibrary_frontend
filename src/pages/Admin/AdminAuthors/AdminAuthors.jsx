@@ -38,7 +38,7 @@ const AdminAuthors = props => {
 			setAuthors(req.data)
 			console.log(req.data)
 		})
-	}, [searchParams])
+	}, [searchParams, updatePage])
 
 	const update = () => {
 		setUpdatePage(updatePage + 1)

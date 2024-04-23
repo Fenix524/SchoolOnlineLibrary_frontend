@@ -135,8 +135,9 @@ const AdminBooks = props => {
 						setModalIsOpen(true)
 					}}
 					onDeleteItem={id => {
-						deleteBook(id)
-						update()
+						deleteBook(id).then(() => {
+							update()
+						})
 					}}
 				/>
 			</div>

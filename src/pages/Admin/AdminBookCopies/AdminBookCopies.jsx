@@ -42,45 +42,38 @@ const AdminBookCopies = props => {
 			setBookCopies(req.data)
 			console.log(req.data)
 		})
-	}, [searchParams])
+	}, [searchParams, updatePage])
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const users = await getAllUsers()
-				setUsersOptions(
-					users.data.map(user => {
-						return {
-							value: user._id,
-							label: user.firstName + ' ' + user.lastName,
-						}
-					})
-				)
+				const users = await getAllUsers({ sort: 'name' })
+				if (!users) {
+					return
+				}
+				console.log('Користувачі', users)
+				const options = users.data.map(user => {
+					return {
+						value: user._id,
+						label: user.firstName + ' ' + user.lastName,
+					}
+				})
+				console.log('Опції користувачів', options)
+				setUsersOptions(options)
 			} catch (error) {}
 
 			try {
-				const books = await getAllBooks()
-				// console.log(books.data)
-				setBooksOptions(
-					books.data.map(book => {
+				getAllBooks({ sort: 'name' }).then(req => {
+					console.log('Всі книги', req.data)
+					const options = req.data.map(book => {
 						return { value: book._id, label: book.name }
 					})
-				)
+					console.log('Опції книг', options)
+					setBooksOptions(options)
+				})
 			} catch (error) {}
 		}
 		fetchData()
 	}, [])
-	// useEffect(() => {
-	// 	const fetchData = async () => {
-	// 		try {
-	// 			const bookCopies = await getAllBookCopies()
-	// 			setBookCopies(bookCopies.data)
-	// 			console.log('Копії книг', bookCopies)
-	// 		} catch (error) {
-	// 			console.error('Помилка отримання копій книг:', error)
-	// 		}
-	// 	}
-	// 	fetchData()
-	// }, [updatePage])
 
 	const update = () => {
 		setUpdatePage(updatePage + 1)
@@ -89,8 +82,8 @@ const AdminBookCopies = props => {
 	const initialValue = bookCopy => {
 		return {
 			copyId: bookCopy?.copyId || '',
-			bookId: bookCopy?.bookId._id || '',
-			userId: bookCopy?.userId._id || '',
+			bookId: bookCopy?.bookId?._id || '',
+			userId: bookCopy?.userId?._id || '',
 			issuedDate: bookCopy?.issuedDate || '',
 			dueDate: bookCopy?.dueDate || '',
 		}
@@ -101,11 +94,12 @@ const AdminBookCopies = props => {
 		bookId: yup.string().required("ID книги є обов'язковим"),
 		userId: yup.string().nullable(),
 		issuedDate: yup.date().nullable(),
-		dueDate: yup.date().nullable().min(yup.ref('issuedDate')),
+		dueDate: yup.date().nullable(),
 	})
 
 	return (
 		<>
+			{console.log('ALL OPTIONS', booksOptions, usersOptions)}
 			<div className={adminCss.filterBar}>
 				<FilterBar />
 				<div className={adminCss.addBookBtn}>
@@ -199,8 +193,8 @@ const AdminBookCopies = props => {
 								fieldName={'bookId'}
 								fieldType='select'
 								options={booksOptions}
-								initialValue={booksOptions.find(option => {
-									return option.value === choiceBookCopy?.bookId._id
+								initialValue={booksOptions?.find(option => {
+									return option.value === choiceBookCopy?.bookId?._id
 								})}
 							/>
 							<FormInput
@@ -208,8 +202,8 @@ const AdminBookCopies = props => {
 								fieldName={'userId'}
 								fieldType='select'
 								options={usersOptions}
-								initialValue={usersOptions.find(option => {
-									return option.value === choiceBookCopy?.userId._id
+								initialValue={usersOptions?.find(option => {
+									return option.value === choiceBookCopy?.userId?._id
 								})}
 							/>
 							<FormInput
