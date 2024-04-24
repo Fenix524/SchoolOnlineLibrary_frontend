@@ -100,7 +100,7 @@
 .openNavBtn.open > * {
 	transform: rotate(0deg);
 }
-/* @keyframes pulse {
+@keyframes pulse {
 	0% {
 		height: 175px;
 		width: 40px;
@@ -114,9 +114,9 @@
 		height: 175px;
 		width: 40px;
 	}
-} */
+}
 
-@keyframes pulse {
+/* @keyframes pulse {
 	0% {
 		border-radius: 150px 150px 19px 19px;
 		width: 40px;
@@ -137,4 +137,4 @@
 		border-radius: 150px 150px 19px 19px;
 		width: 40px;
 	}
-}
+} */
