@@ -44,6 +44,14 @@ const AdminBooks = props => {
 	const update = () => {
 		setUpdatePage(updatePage + 1)
 	}
+	const ageRatingOptions = [
+		{ value: '18+', label: '18+' },
+		{ value: '16+', label: '16+' },
+		{ value: '12+', label: '12+' },
+		{ value: '6+', label: '6+' },
+		{ value: '3+', label: '3+' },
+		{ value: '0+', label: '0+' },
+	]
 
 	useEffect(() => {
 		getAllBooks({ ...Object.fromEntries(searchParams), sort: 'name' }).then(
@@ -197,6 +205,14 @@ const AdminBooks = props => {
 								fieldTitle={'Віковий рейтинг'}
 								fieldName={'ageRating'}
 								fieldId={ageRatingId}
+								fieldType='select'
+								options={ageRatingOptions}
+								initialValue={ageRatingOptions.find(option => {
+									return (
+										option.value ===
+										books.find(book => book?._id === bookId)?.ageRating
+									)
+								})}
 							/>
 							<FormInput
 								fieldTitle={'Жанр'}
